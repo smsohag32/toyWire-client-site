@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* google font */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;600;700&display=swap');
+
+
+body{
+  font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Oswald', sans-serif; */
+}
+.toy-container{
+  @apply w-full max-w-[1280px] mx-auto md:px-5 px-8
+}
+
+.primary-btn{
+  @apply bg-[#3bb77e] text-white rounded-sm py-1 px-3
+}
+.secondary-btn{
+  @apply bg-[#ea3a3c] text-white rounded-sm py-1 px-2 bg-opacity-80
+}
+
+.primary-text{
+  @apply text-[#3bb77e]
+}
+
+.-text{
+  @apply text-[#176053]
+}
+
+.h-bg{
+  @apply bg-[#f59758]
+}
