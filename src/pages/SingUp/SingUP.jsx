@@ -1,27 +1,43 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
-import { set, useForm } from "react-hook-form";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { useForm } from "react-hook-form";
 
 const SingUp = () => {
+  const { userSingUp, userLogout, userProfileUpdate } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { userSingUp } = useContext(AuthContext);
-  //   const [error, setError] = useState("");
-  // form handle
+  const [error, setError] = useState("");
+  const [isShow, setIsShow] = useState(false);
+
+  //   react hook form
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
+  //   form handle
   const onSubmit = (userInfo) => {
     const { fName, lName, email, photo, password } = userInfo;
+    let fullName = "";
+    if (lName) {
+      fullName = fName + lName;
+    } else {
+      fullName = fName;
+    }
+    // create user in firebase
     userSingUp(email, password)
-      .then((result) => {
+      .then(() => {
+        userProfileUpdate(fullName, photo).then().catch();
+        userLogout().then().catch();
         navigate("/login");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        if (error.message.includes("already")) {
+          setError("Your already have a account please Login");
+        }
+      });
   };
 
   return (
@@ -38,13 +54,14 @@ const SingUp = () => {
           <div className="grid md:grid-cols-2 md:gap-6">
             <div className="relative z-0 w-full mb-6 group">
               <input
-                {...register("fName", { required: true })}
+                {...register("fName", {
+                  required: "Field is empty input your name",
+                })}
                 type="text"
                 name="fName"
                 id="floating_first_name"
                 className="block py-2.5 px-0 rounded-md ps-3 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
-                required
               />
               <label
                 htmlFor="floating_first_name"
@@ -52,6 +69,11 @@ const SingUp = () => {
               >
                 First name
               </label>
+              {errors.fName && (
+                <span className="text-red-600 text-sm">
+                  <small>{errors.fName?.message} *</small>
+                </span>
+              )}
             </div>
             <div className="relative z-0 w-full mb-6 group">
               <input
@@ -60,7 +82,6 @@ const SingUp = () => {
                 id="floating_last_name"
                 className="block py-2.5 ps-3 rounded-lg w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
-                required
               />
               <label
                 htmlFor="floating_last_name"
@@ -72,20 +93,31 @@ const SingUp = () => {
           </div>
           <div className="relative z-0 w-full mb-6 group">
             <input
-              {...register("email", { required: true })}
+              {...register("email", {
+                required: "This field required *",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Invalid email address",
+                },
+              })}
               type="email"
               name="email"
               id="floating_email"
               className="block py-2.5 ps-3 rounded-lg w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
-              required
             />
+
             <label
               htmlFor="floating_email"
               className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-8 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8"
             >
               Email address
             </label>
+            {errors?.email && (
+              <span className="text-red-600 text-sm">
+                <small>{errors.email?.message}</small>
+              </span>
+            )}
           </div>
           <div className="relative z-0 w-full mb-6 group">
             <input
@@ -95,7 +127,6 @@ const SingUp = () => {
               id="floating_photo"
               className="block py-2.5  ps-3 rounded-lg w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
-              required
             />
             <label
               htmlFor="floating_photo"
@@ -107,8 +138,14 @@ const SingUp = () => {
 
           <div className="relative z-0 w-full mb-6 group">
             <input
-              {...register("password", { required: true })}
-              type="password"
+              {...register("password", {
+                required: "Fields is empty enter a password *",
+                minLength: {
+                  value: 6,
+                  message: "Password must be 6 characters",
+                },
+              })}
+              type={`${isShow ? "text" : "password"}`}
               name="password"
               id="floating_password"
               className="block py-2.5 ps-3 rounded-lg w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -120,9 +157,29 @@ const SingUp = () => {
             >
               Password
             </label>
+            <span
+              onClick={() => setIsShow(!isShow)}
+              className="peer-focus:font-medium absolute right-5 text-sm text-gray-500 dark:text-gray-400 duration-300  top-3 z-50 peer-focus:text-blue-600 "
+            >
+              {isShow ? (
+                <AiFillEye className="w-5 h-5" />
+              ) : (
+                <AiFillEyeInvisible className="w-5 h-5" />
+              )}
+            </span>
+            {errors?.password && (
+              <span className="text-red-600 text-sm">
+                <small>{errors.password?.message}</small>
+              </span>
+            )}
           </div>
 
-          <div className="w-full text-center mb-6">
+          <div className="w-full flex flex-col text-center mb-6">
+            {error && (
+              <span>
+                <small className="text-red-600">{error}</small>
+              </span>
+            )}
             <span>
               <small>Already have an account </small>
               <Link className="link primary-text ms-1 font-medium" to="/login">
