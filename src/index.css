@@ -5,12 +5,15 @@
 /* google font */
 
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Gochi+Hand&family=Pacifico&family=Patrick+Hand&display=swap');
 
 
 body{
-  font-family: 'Montserrat', sans-serif;
-    /* font-family: 'Oswald', sans-serif; */
+  /* font-family: 'Andika', sans-serif; */
+    font-family: 'Gochi Hand', cursive;
+    /* font-family: 'Patrick Hand', cursive; */
+    /* font-family: 'Srisakdi', cursive; */
+    /* font-family: 'Pacifico', cursive; */
 }
 .toy-container{
   @apply w-full max-w-[1280px] mx-auto md:px-5 px-8
@@ -26,9 +29,9 @@ body{
 .primary-text{
   @apply text-[#0056d2]
 }
-/* .primary-text{
+.secondary-text{
   @apply text-[#ffb916]
-} */
+}
 .toy-bg{
   @apply bg-[#f4f4f6]
 }
