@@ -10,9 +10,9 @@ const PopularToys = () => {
   return (
     <div className="py-10">
       <div className="toy-container">
-        <div className="flex flex-col w-full border-opacity-50">
+        <div className="flex flex-col max-w-md mx-auto w-full border-opacity-50">
           <div className="divider">
-            <h2>Popular Robotics Toys</h2>
+            <h2 className="text-2xl">New Arrival Gallery</h2>
           </div>
         </div>
 

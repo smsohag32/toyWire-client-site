@@ -1,0 +1,21 @@
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthProvider";
+import { Navigate, useLocation } from "react-router-dom";
+import { toast } from "react-hot-toast";
+
+const PrivateRoute = ({ children }) => {
+  const { loading, user } = useContext(AuthContext);
+
+  const location = useLocation();
+  if (loading) {
+    return <p>Loading</p>;
+  }
+  if (user) {
+    return children;
+  } else {
+    toast.error("Please Login to continue.");
+    <Navigate to="/login" state={{ from: location }}></Navigate>;
+  }
+};
+
+export default PrivateRoute;

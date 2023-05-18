@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 
