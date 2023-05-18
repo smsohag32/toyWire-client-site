@@ -5,7 +5,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 
 const SingUp = () => {
-  const { userSingUp, userLogout, userProfileUpdate } = useContext(AuthContext);
+  const { userSingUp, userLogOut, userProfileUpdate } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isShow, setIsShow] = useState(false);
@@ -30,7 +30,7 @@ const SingUp = () => {
     userSingUp(email, password)
       .then(() => {
         userProfileUpdate(fullName, photo).then().catch();
-        userLogout().then().catch();
+        userLogOut();
         navigate("/login");
       })
       .catch((error) => {
@@ -41,10 +41,12 @@ const SingUp = () => {
   };
 
   return (
-    <div className="py-10 bg-opacity-50 toy-bg">
+    <div className="pt-5 pb-10 bg-opacity-50 toy-bg">
       <div className="max-w-md mx-auto bg-white bg-opacity-90  backdrop-blur-xl rounded-md p-5">
         <div className="grid items-center w-full grid-cols-1 text-center justify-center">
-          <h3 className="text-xl mt-1 font-bold primary-text">Sing up</h3>
+          <h3 className="text-xl mt-1 font-bold">
+            Create your Toy<span className="secondary-text">W</span>ire Account
+          </h3>
           <div className="flex w-1/2 flex-col mx-auto opacity-40 border-opacity-20">
             <div className="divider"></div>
           </div>
