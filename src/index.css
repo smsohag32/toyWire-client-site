@@ -17,20 +17,27 @@ body{
 }
 
 .primary-btn{
-  @apply bg-[#3bb77e] text-white rounded-sm py-1 px-3
+  @apply bg-[#0056d2] text-white rounded-sm py-1 px-3
 }
 .secondary-btn{
-  @apply bg-[#ea3a3c] text-white rounded-sm py-1 px-2 bg-opacity-80
+  @apply bg-[#ffb916] text-white rounded-sm py-1 px-2 bg-opacity-80
 }
 
 .primary-text{
-  @apply text-[#3bb77e]
+  @apply text-[#0056d2]
 }
-
-.-text{
-  @apply text-[#176053]
+/* .primary-text{
+  @apply text-[#ffb916]
+} */
+.toy-bg{
+  @apply bg-[#f4f4f6]
 }
-
+.wire-bg{
+  @apply text-[#f4f4f6]
+}
+.logo-bg{
+  @apply bg-[#ffb916]
+}
 .h-bg{
   @apply bg-[#f59758]
 }
