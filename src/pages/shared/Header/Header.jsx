@@ -23,7 +23,7 @@ const Header = () => {
           </Link>
         </span>
 
-        <ul className="flex flex-col gap-[1.5rem] md:flex-row">
+        <ul className="flex flex-col absolute md:static gap-[1.5rem] md:flex-row">
           <li>
             <NavLink
               className={({ isActive }) => (isActive ? "primary-text" : "")}
