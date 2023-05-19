@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "./banner.css";
 import { Autoplay, FreeMode, Thumbs } from "swiper";
+import Spinner from "../../../components/Spinner";
 const Banner = () => {
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +24,7 @@ const Banner = () => {
   }, []);
 
   if (loading) {
-    return <p className="h-screen text-center">Loading</p>;
+    return <Spinner />;
   }
   console.log(offers);
   return (
