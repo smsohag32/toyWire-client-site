@@ -167,11 +167,15 @@ const AddToy = () => {
                 })}
                 className="select select-ghost border-1 border-stone-300 w-full"
               >
-                <option>Plush</option>
-                <option>Musical</option>
+                <option>Talking Plush</option>
+                <option>Light-up Sensory</option>
+                <option>Dancing Toy</option>
+                <option>Music Robots</option>
+                <option>Alphabet Number Learning</option>
+                <option>Color Recognition</option>
                 <option>Storytelling</option>
-                <option>Robotic Vehicle</option>
-                <option>Puzzle</option>
+                <option>Musical Plush</option>
+                <option>Huggable</option>
               </select>
 
               {errors?.subCategory && (

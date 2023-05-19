@@ -54,3 +54,11 @@ body{
     margin: 0;
   }
 }
+
+.sub-category{
+  @apply flex flex-col md:flex-row border-2 p-5 justify-end items-end
+}
+
+.category {
+  @apply mb-2 flex flex-col md:flex-row border-2 p-5 justify-start items-start
+}
