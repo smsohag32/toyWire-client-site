@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import SingUp from "../pages/Singup/Singup";
 import AddToy from "../pages/AddToy/AddToy";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import AllToys from "../pages/AllToys/AllToys/AllToys";
 
 const routes = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "alltoys",
+        element: <AllToys />,
       },
       {
         path: "login",

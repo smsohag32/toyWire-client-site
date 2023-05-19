@@ -3,6 +3,7 @@ import { FaProductHunt } from "react-icons/fa";
 import { AuthContext } from "../../context/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+
 const AddToy = () => {
   const { user } = useContext(AuthContext);
   // handle create product
@@ -13,14 +14,6 @@ const AddToy = () => {
     formState: { errors },
   } = useForm();
 
-  // handle to max ratting
-  const maxRatting = 5;
-  const validateHeightRating = (value) => {
-    if (value > maxRatting) {
-      return `The height rating should not exceed ${maxRatting}`;
-    }
-    return true;
-  };
   //   handle form value in react hook form to post database
   const onSubmit = (newToy) => {
     fetch(`http://localhost:3000/toys`, {
@@ -62,15 +55,13 @@ const AddToy = () => {
             <div className="grid md:grid-cols-2 md:gap-6">
               <div className="relative z-0 w-full mb-6 group">
                 <input
-                  {...register("name", {
-                    required: "Field is empty input your name",
-                  })}
+                  {...register("sellerName")}
                   type="text"
-                  name="name"
+                  name="sellerName"
                   id="floating_name"
                   className="block py-2.5 px-0 rounded-md ps-3 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
-                  defaultValue={user?.displayName}
+                  value={user?.displayName}
                 />
                 <label
                   htmlFor="floating_name"
@@ -78,27 +69,16 @@ const AddToy = () => {
                 >
                   Seller Name
                 </label>
-                {errors.name && (
-                  <span className="text-red-600 text-sm">
-                    <small>{errors.name?.message} *</small>
-                  </span>
-                )}
               </div>
               <div className="relative z-0 w-full mb-6 group">
                 <input
-                  {...register("email", {
-                    required: "This field required *",
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "Invalid email address",
-                    },
-                  })}
+                  {...register("email")}
                   type="email"
                   name="email"
                   id="floating_email"
                   className="block py-2.5 ps-3 rounded-lg w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
-                  defaultValue={user?.email}
+                  value={user?.email}
                 />
                 <label
                   htmlFor="floating_email"
@@ -106,11 +86,6 @@ const AddToy = () => {
                 >
                   Seller Email
                 </label>
-                {errors?.email && (
-                  <span className="text-red-600 text-sm">
-                    <small>{errors.email?.message}</small>
-                  </span>
-                )}
               </div>
             </div>
           </div>
@@ -143,19 +118,11 @@ const AddToy = () => {
           <div className="py-3">
             <h3 className="text-xl font-medium mb-3">Description</h3>
             <textarea
-              {...register("description", {
-                required: "Field is empty input your name",
-              })}
               placeholder="Enter Toy Details Description"
               rows="5"
               name="description"
               className="textarea border-1 leading-snug border-stone-400 textarea-ghost border-opacity-50 textarea-lg w-full"
             ></textarea>
-            {errors?.description && (
-              <span className="text-red-600 text-sm">
-                <small>{errors.description?.message}</small>
-              </span>
-            )}
           </div>
 
           <div className="py-3 grid grid-cols-2 gap-10">
@@ -189,9 +156,13 @@ const AddToy = () => {
               <input
                 {...register("ratting", {
                   required: "This field is required *",
-                  validate: validateHeightRating,
+                  max: { value: 5, message: "Max ratting 5" },
+                  pattern: {
+                    value: /^\d+(\.\d{1,2})?$/,
+                    message: "Invalid Ratting ",
+                  },
                 })}
-                type="number"
+                type="text"
                 name="ratting"
                 id="ratting"
                 className="input-ghost input border-1 border-stone-300 w-full"
