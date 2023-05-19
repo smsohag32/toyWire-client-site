@@ -23,9 +23,9 @@ const Header = () => {
             <img className="w-10" src={logo} alt="logo" />
             <p
               style={{ fontFamily: `'Pacifico', cursive` }}
-              className=" font-bold text-xl"
+              className=" font-bold uppercase text-xl"
             >
-              <span className="secondary-text">T</span>oyWire
+              Toy<span className="secondary-text">W</span>ire
             </p>
           </Link>
         </span>
@@ -58,7 +58,7 @@ const Header = () => {
           <li>
             <NavLink
               className={({ isActive }) => (isActive ? "primary-text" : "")}
-              to="/addtoy"
+              to="/add-toy"
             >
               Add a Toy
             </NavLink>

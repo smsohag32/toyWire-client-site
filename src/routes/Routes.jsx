@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import SingUp from "../pages/Singup/Singup";
+import AddToy from "../pages/AddToy/AddToy";
 
 const routes = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const routes = createBrowserRouter([
       {
         path: "singUp",
         element: <SingUp />,
+      },
+      {
+        path: "add-toy",
+        element: <AddToy />,
       },
     ],
   },
