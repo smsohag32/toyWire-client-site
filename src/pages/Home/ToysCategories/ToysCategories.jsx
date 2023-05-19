@@ -3,41 +3,23 @@ import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 const ToysCategories = () => {
-  const [selectedTab, setSelectedTab] = useState(0);
-  const [categoryData, SetCategoryData] = useState(null);
-
-  //   handle category data load
-  const handleCategoryData = (index) => {
-    setSelectedTab(index);
+  const [categoryData, setCategoryData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const fetchCategoryData = async (category) => {
+    setLoading(true);
+    console.log(category);
+    const res = await fetch(
+      `http://localhost:3000/subCategory?category=${category}`
+    );
+    const data = await res.json();
+    setCategoryData(data);
   };
 
-  // load category data
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let category = "";
-        if (selectedTab == 0) {
-          category = "Plush";
-        } else if (selectedTab == 1) {
-          category = "Musical";
-        } else if (selectedTab == 2) {
-          category = "Storytelling";
-        } else if (selectedTab == 3) {
-          category = "Vehicle";
-        } else {
-          category = "all";
-        }
+  const handleTab = (index, category) => {
+    fetchCategoryData(category);
+  };
 
-        const res = await fetch(`http://localhost:3000/toys/${category}`);
-        const data = await res.json();
-        SetCategoryData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [selectedTab, categoryData]);
+  console.log(categoryData);
   return (
     <div className="bg-white py-10">
       <div className="toy-container">
@@ -52,13 +34,13 @@ const ToysCategories = () => {
             facilis.
           </p>
         </div>
-        <Tabs selectedIndex={selectedTab} onSelect={handleCategoryData}>
+        <Tabs>
           <TabList className="flex justify-center">
-            <Tab>Robotics Plush</Tab>
-            <Tab>Musical</Tab>
-            <Tab>Storytelling</Tab>
-            <Tab>Puzzle</Tab>
-            <Tab>Robotic Vehicle</Tab>
+            <Tab onClick={() => handleTab(0, "Plush")}>Robotics Plush</Tab>
+            <Tab onClick={() => handleTab(0, "Musical")}>Musical</Tab>
+            <Tab onClick={() => handleTab(0, "Storytelling")}>Storytelling</Tab>
+            <Tab onClick={() => handleTab(0, "Puzzle")}>Puzzle</Tab>
+            <Tab onClick={() => handleTab(0, "Vehicle")}>Robotic Vehicle</Tab>
           </TabList>
           <TabPanel></TabPanel>
         </Tabs>
