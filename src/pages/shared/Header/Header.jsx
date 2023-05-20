@@ -1,9 +1,13 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../../assets/logo/toyLogo.png";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
+import { CiMenuFries } from "react-icons/ci";
+import { GrClose } from "react-icons/gr";
 const Header = () => {
   const { user, userLogOut } = useContext(AuthContext);
+  const [isOpen, setIsOpen] = useState(false);
+
   // route change scroll to top position handle
   const { pathname } = useLocation() || "/";
 
@@ -15,9 +19,32 @@ const Header = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
+  // handle to navLink hide onscroll
+  const handleHideNavLink = () => {
+    if (window.scrollY >= 60) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    handleHideNavLink();
+    window.addEventListener("scroll", handleHideNavLink);
+  }, []);
+
   return (
     <div className="bg-slate-100 shadow-sm backdrop-blur-2xl bg-opacity-90 sticky top-0 left-0 right-0 z-50 py-2">
       <nav className="flex toy-container items-center justify-between">
+        <div className="md:hidden">
+          {isOpen ? (
+            <span onClick={() => setIsOpen(false)}>
+              <GrClose className="text-2xl font-bold duration-200" />
+            </span>
+          ) : (
+            <span onClick={() => setIsOpen(true)}>
+              <CiMenuFries className="text-2xl font-bold duration-200"></CiMenuFries>
+            </span>
+          )}
+        </div>
         <span>
           <Link className="flex items-center gap-1" to="./">
             <img className="w-10" src={logo} alt="logo" />
@@ -30,7 +57,13 @@ const Header = () => {
           </Link>
         </span>
 
-        <ul className="flex flex-col absolute md:static gap-[1.5rem] md:flex-row">
+        <ul
+          className={`flex flex-col py-8 md:py-0 bg-slate-300 md:bg-transparent  md:text-black absolute md:static gap-[1.5rem] md:flex-row ${
+            isOpen
+              ? "top-[82px] transform duration-100 right-0 left-0 text-center"
+              : "-right-60 top-[82px] overflow-hidden duration-100"
+          }`}
+        >
           <li>
             <NavLink
               className={({ isActive }) => (isActive ? "primary-text" : "")}

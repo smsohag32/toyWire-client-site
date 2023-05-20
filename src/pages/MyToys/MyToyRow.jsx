@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
-const MyToyRow = ({ myToy, index, handleDelete, setUpdatedToy }) => {
+const MyToyRow = ({ myToy, index, handleDelete }) => {
   const {
     _id,
     toyName,
@@ -49,13 +49,12 @@ const MyToyRow = ({ myToy, index, handleDelete, setUpdatedToy }) => {
           >
             View
           </Link>
-          <label
-            onClick={() => setUpdatedToy(myToy)}
-            htmlFor="my-modal-5"
+          <Link
+            to={`/toy/update/${_id}`}
             className="secondary-bg btn-xs flex justify-center cursor-pointer text-center items-center text-white backdrop-blur-md"
           >
             Edit
-          </label>
+          </Link>
 
           <button
             htmlFor="my-modal-6"

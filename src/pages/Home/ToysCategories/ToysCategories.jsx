@@ -30,15 +30,9 @@ const ToysCategories = () => {
     <div className="bg-white py-10">
       <div className="toy-container">
         <div className="text-center space-y-2">
-          <h3 className="text-2xl font-bold">
+          <h3 className="text-2xl font-serif font-bold">
             Features Robotic all Categories Toys
           </h3>
-          <p className="md:max-w-lg mx-auto">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut tempore
-            ut totam illo, iste voluptas numquam dolorum facilis placeat? Culpa
-            accusamus possimus at aut, dolor qui inventore illo voluptatum
-            facilis.
-          </p>
         </div>
 
         <Tabs className="">
@@ -59,7 +53,7 @@ const ToysCategories = () => {
           </TabList>
 
           <TabPanel>
-            <h2 className="flex py-2 px-2 items-center justify-end gap-2 ">
+            <h2 className="flex py-2 px-2 font-sans items-center justify-end gap-2 ">
               Choose with Sub Category
               <AiFillCaretDown className="mt-2"></AiFillCaretDown>{" "}
             </h2>
@@ -78,7 +72,7 @@ const ToysCategories = () => {
             </Tabs>
           </TabPanel>
           <TabPanel>
-            <h2 className="flex py-2 px-2 items-center justify-end gap-2 ">
+            <h2 className="flex font-sans py-2 px-2 items-center justify-end gap-2 ">
               Choose with Sub Category
               <AiFillCaretDown className="mt-2"></AiFillCaretDown>{" "}
             </h2>
