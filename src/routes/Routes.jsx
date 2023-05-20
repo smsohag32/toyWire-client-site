@@ -7,6 +7,8 @@ import AddToy from "../pages/AddToy/AddToy";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AllToys from "../pages/AllToys/AllToys/AllToys";
 import ToyDetails from "../pages/ToyDetails/ToyDetails";
+import MyToys from "../pages/MyToys/MyToys";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -37,8 +39,20 @@ const routes = createBrowserRouter([
         element: <SingUp />,
       },
       {
+        path: "my-toys",
+        element: (
+          <PrivateRoute>
+            <MyToys />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "add-toy",
-        element: <AddToy />,
+        element: (
+          <PrivateRoute>
+            <AddToy />
+          </PrivateRoute>
+        ),
       },
     ],
   },

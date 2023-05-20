@@ -50,7 +50,7 @@ const Header = () => {
           <li>
             <NavLink
               className={({ isActive }) => (isActive ? "primary-text" : "")}
-              to="/mytoys"
+              to="/my-toys"
             >
               MY Toys
             </NavLink>

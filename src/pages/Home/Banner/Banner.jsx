@@ -45,33 +45,31 @@ const Banner = () => {
       >
         {offers &&
           offers.map((offer) => (
-            <>
-              <SwiperSlide>
-                <div className="w-full">
-                  <img
-                    className="relative h-full contrast-75  brightness-50"
-                    src={offer.img}
-                  />
-                  <div className="absolute text-white top-0 h-full left-0 bg-gradient-to-b from-[#1b1b1b] to-[rgba(21, 21, 21, 0)] bg-opacity-10 justify-center right-0 ">
-                    <div className="flex toy-container md:mt-10 sm:mt-5 lg:mt-14 flex-col lg:flex-row items-center h-full">
-                      <div className="text-left sm:space-y-3 md:space-y-3 lg:space-y-3 mt-2 p-2 w-full h-full bg-opacity-20">
-                        <h2 className="text-white leading-tight opacity-90 text-xl  md:text-3xl text-center md:text-left">
-                          {offer.title}
-                        </h2>
-                        <p className="w-full text-xs text-center md:text-left md:text-lg px-5 opacity-70">
-                          {offer.description}
-                        </p>
-                      </div>
-                      <div className="w-full flex flex-col gap-3 items-center justify-center h-full mb-5">
-                        <button className="btn primary-btn outline-none border-none">
-                          Shop Now
-                        </button>
-                      </div>
+            <SwiperSlide key={offer._id}>
+              <div className="w-full">
+                <img
+                  className="relative h-full contrast-75  brightness-50"
+                  src={offer.img}
+                />
+                <div className="absolute text-white top-0 h-full left-0 bg-gradient-to-b from-[#1b1b1b] to-[rgba(21, 21, 21, 0)] bg-opacity-10 justify-center right-0 ">
+                  <div className="flex toy-container md:mt-10 sm:mt-5 lg:mt-14 flex-col lg:flex-row items-center h-full">
+                    <div className="text-left sm:space-y-3 md:space-y-3 lg:space-y-3 mt-2 p-2 w-full h-full bg-opacity-20">
+                      <h2 className="text-white leading-tight opacity-90 text-xl  md:text-3xl text-center md:text-left">
+                        {offer.title}
+                      </h2>
+                      <p className="w-full text-xs text-center md:text-left md:text-lg px-5 opacity-70">
+                        {offer.description}
+                      </p>
+                    </div>
+                    <div className="w-full flex flex-col gap-3 items-center justify-center h-full mb-5">
+                      <button className="btn primary-btn outline-none border-none">
+                        Shop Now
+                      </button>
                     </div>
                   </div>
                 </div>
-              </SwiperSlide>
-            </>
+              </div>
+            </SwiperSlide>
           ))}
       </Swiper>
       <Swiper
