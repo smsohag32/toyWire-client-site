@@ -6,13 +6,24 @@ import "swiper/css/pagination";
 
 import "./popularToys.css";
 import { EffectCoverflow, Pagination } from "swiper";
+import { useEffect, useState } from "react";
 const PopularToys = () => {
+  const [popularToys, sePopularToys] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/popular`)
+      .then((res) => res.json())
+      .then((data) => {
+        sePopularToys(data);
+      });
+  }, []);
+
   return (
     <div className="py-10">
       <div className="toy-container">
         <div className="flex flex-col max-w-md mx-auto w-full border-opacity-50">
           <div className="divider">
-            <h2 className="text-2xl">New Arrival Gallery</h2>
+            <h2 className="text-2xl">Popular Robotic Toys Gallery</h2>
           </div>
         </div>
 

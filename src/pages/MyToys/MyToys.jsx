@@ -2,11 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import HeaderBanner from "../../components/HeaderBanner";
 import MyToyRow from "./MyToyRow";
+import Modal from "../../components/Modal";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [updateToy, setUpdatedToy] = useState({});
+
   // handle delete toy
   const handleDelete = (id) => {
     fetch(`http://localhost:3000/toy/${id}`, {
@@ -68,12 +71,15 @@ const MyToys = () => {
                     handleDelete={handleDelete}
                     index={index}
                     myToy={myToy}
+                    setUpdatedToy={setUpdatedToy}
                   />
                 ))}
             </tbody>
           </table>
         </div>
       </div>
+      {/* handle toy information in modal */}
+      <Modal updatedToy={updateToy} />
     </div>
   );
 };
