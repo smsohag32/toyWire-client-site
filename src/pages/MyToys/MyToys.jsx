@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/AuthProvider";
 import HeaderBanner from "../../components/HeaderBanner";
 import MyToyRow from "./MyToyRow";
 import Modal from "../../components/Modal";
+import { AiFillDownSquare } from "react-icons/ai";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -23,6 +24,15 @@ const MyToys = () => {
         }
       });
   };
+  // handle to filter data
+  const handleFilter = (value) => {
+    fetch(`http://localhost:3000/sorted?filter=${value}&&email=${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMyToys(data);
+      });
+  };
+
   // load data
   useEffect(() => {
     setLoading(true);
@@ -50,6 +60,27 @@ const MyToys = () => {
         </div>
       </HeaderBanner>
       <div className="toy-container backdrop-blur-md bg-opacity-50 py-10">
+        <div>
+          <div className="dropdown dropdown-bottom">
+            <label tabIndex={0} className=" items-center btn m-1 flex gap-3">
+              Filter
+              <span>
+                <AiFillDownSquare></AiFillDownSquare>
+              </span>
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <button onClick={() => handleFilter(1)}>Ascending</button>
+              </li>
+              <li>
+                <button onClick={() => handleFilter(0)}>Descending</button>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div className="overflow-x-auto w-full">
           <table className="table backdrop-blur-lg w-full">
             {/* head */}
