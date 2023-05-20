@@ -13,8 +13,7 @@ const PrivateRoute = ({ children }) => {
   if (user) {
     return children;
   } else {
-    toast.error("Please Login to continue.");
-    <Navigate to="/login" state={{ from: location }}></Navigate>;
+    return <Navigate to="/login" state={{ from: location }}></Navigate>;
   }
 };
 

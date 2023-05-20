@@ -83,11 +83,9 @@ const Banner = () => {
       >
         {offers &&
           offers.map((offer) => (
-            <>
-              <SwiperSlide>
-                <img src={offer.img} />
-              </SwiperSlide>
-            </>
+            <SwiperSlide key={offer._id}>
+              <img src={offer.img} />
+            </SwiperSlide>
           ))}
       </Swiper>
     </div>

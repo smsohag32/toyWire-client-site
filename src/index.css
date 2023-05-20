@@ -33,7 +33,13 @@ body{
   @apply text-[#ffb916]
 }
 .toy-bg{
-  @apply bg-[#f4f4f6]
+  @apply bg-[#0056d2] bg-opacity-10
+}
+.primary-bg{
+  @apply bg-[#0056d2]
+}
+.secondary-bg{
+  @apply bg-[#f57224]
 }
 .wire-bg{
   @apply text-[#f4f4f6]
