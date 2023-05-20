@@ -1,6 +1,19 @@
+import { useEffect, useState } from "react";
 import HeaderBanner from "../../../components/HeaderBanner";
+import ToyRow from "./ToyRow";
 
 const AllToys = () => {
+  const [allToys, setAllToys] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/toys`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAllToys(data);
+      });
+  }, []);
+
+  console.log(allToys);
   return (
     <div>
       <HeaderBanner>
@@ -62,7 +75,8 @@ const AllToys = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th></th>
+                <th>SL</th>
+                <th>Seller Name</th>
                 <th>Toy Name</th>
                 <th>Sub Category</th>
                 <th>Price</th>
@@ -71,27 +85,10 @@ const AllToys = () => {
               </tr>
             </thead>
             <tbody>
-              {/* row 1 */}
-              <tr>
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
-              </tr>
-              {/* row 2 */}
-              <tr className="active">
-                <th>2</th>
-                <td>Hart Hagerty</td>
-                <td>Desktop Support Technician</td>
-                <td>Purple</td>
-              </tr>
-              {/* row 3 */}
-              <tr>
-                <th>3</th>
-                <td>Brice Swyre</td>
-                <td>Tax Accountant</td>
-                <td>Red</td>
-              </tr>
+              {allToys &&
+                allToys.map((toy, index) => (
+                  <ToyRow index={index} key={toy._id} toy={toy} />
+                ))}
             </tbody>
           </table>
         </div>
