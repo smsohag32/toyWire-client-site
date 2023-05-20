@@ -3,6 +3,7 @@ import { AiFillCaretDown } from "react-icons/ai";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./category.css";
+import ToyCard from "../../../components/ToyCard";
 
 const ToysCategories = () => {
   const [categoryData, setCategoryData] = useState(null);
@@ -24,7 +25,7 @@ const ToysCategories = () => {
   useEffect(() => {
     handleTab("Talking Plush");
   }, []);
-  console.log(categoryData);
+
   return (
     <div className="bg-white py-10">
       <div className="toy-container">
@@ -74,16 +75,6 @@ const ToysCategories = () => {
                   Huggable Robotic Toys
                 </Tab>
               </TabList>
-              <TabPanel>
-                <p>
-                  Youngest child and daughter of Homer and Marge; sister of Bart
-                  and Lisa.
-                </p>
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/Maggie_Simpson.png/223px-Maggie_Simpson.png"
-                  alt="Maggie Simpson"
-                />
-              </TabPanel>
             </Tabs>
           </TabPanel>
           <TabPanel>
@@ -103,12 +94,6 @@ const ToysCategories = () => {
                   Music Robots
                 </Tab>
               </TabList>
-              <TabPanel>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-                nobis dignissimos voluptatem sequi culpa totam ad accusamus sint
-                natus debitis odio, at repudiandae dolor modi minima voluptatum
-                officiis, ea sunt!
-              </TabPanel>
             </Tabs>
           </TabPanel>
           <TabPanel>
@@ -128,10 +113,13 @@ const ToysCategories = () => {
                   Storytelling
                 </Tab>
               </TabList>
-              <TabPanel>okay</TabPanel>
             </Tabs>
           </TabPanel>
         </Tabs>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3">
+          {categoryData &&
+            categoryData.map((toy) => <ToyCard key={toy._id} toy={toy} />)}
+        </div>
       </div>
     </div>
   );
