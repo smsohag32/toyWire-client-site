@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import Blog from "./Blog";
 import faqImg from "../../assets/banner/faq.png";
@@ -16,9 +15,12 @@ const Blogs = () => {
         setLoading(false);
       });
   }, []);
+
+  // spinner
   if (loading) {
     return <Spinner />;
   }
+
   return (
     <div className="bg-slate-100">
       <div

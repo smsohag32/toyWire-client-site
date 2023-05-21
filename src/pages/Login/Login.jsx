@@ -5,8 +5,9 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
+import { FaGoogle } from "react-icons/fa";
 const Login = () => {
-  const { userLogin } = useContext(AuthContext);
+  const { userLogin, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isShow, setIsShow] = useState(false);
@@ -36,6 +37,15 @@ const Login = () => {
           setError("Your password is not correct.");
         }
       });
+  };
+
+  // handle google login
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        navigate(from, { replace: true });
+      })
+      .catch();
   };
 
   return (
@@ -139,6 +149,14 @@ const Login = () => {
             </button>
           </div>
         </form>
+        <div className="mt-5 px-5">
+          <button
+            onClick={handleGoogleLogin}
+            className="w-full flex justify-center items-center gap-5 rounded-xl py-2 hover:bg-orange-300 uppercase text-xs primary-text hover: hover:text-white hover:border-stone-100 font-bold border-black border-2"
+          >
+            <FaGoogle className="" /> Login with google
+          </button>
+        </div>
       </div>
     </div>
   );
