@@ -44,12 +44,7 @@ const AddToy = () => {
       <div className="toy-container">
         <div className="p-8 max-w-2xl mx-auto">
           {/* create product form */}
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="my-5"
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-          >
+          <form onSubmit={handleSubmit(onSubmit)} className="my-5">
             {/* header title */}
             <div className="border-2 p-5">
               <div className="flex gap-4 items-center">
