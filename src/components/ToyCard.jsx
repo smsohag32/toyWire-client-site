@@ -1,11 +1,28 @@
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
+
+import Swal from "sweetalert2";
 // single card
 const ToyCard = ({ toy }) => {
   const { _id, toyName, img, price, ratting } = toy;
+  const { user } = useContext(AuthContext);
+
+  const handleToast = () => {
+    if (!user) {
+      Swal.fire({
+        icon: "error",
+        title: "You are not eligible for this page login now",
+      });
+    }
+  };
   return (
-    <div className="border-2 hover:scale-y-105 duration-1000 overflow-hidden">
+    <div
+      data-aos="fade-right"
+      className="border-2 hover:scale-y-105 duration-1000 overflow-hidden"
+    >
       <div className="card w-full h-full">
         <div className="relative min-h-[40%]  object-contain overflow-hidden bg-cover bg-no-repeat">
           <img
@@ -28,12 +45,14 @@ const ToyCard = ({ toy }) => {
             </span>
           </div>
           <div className="w-full mt-6 flex justify-end">
-            <Link
-              className="primary-btn text-center w-full"
-              to={`/toys/${_id}`}
-            >
-              View
-            </Link>
+            <span onClick={handleToast}>
+              <Link
+                className="primary-btn text-center w-full"
+                to={`/toys/${_id}`}
+              >
+                View
+              </Link>
+            </span>
           </div>
         </div>
       </div>

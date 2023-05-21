@@ -3,6 +3,7 @@ import { FaProductHunt } from "react-icons/fa";
 import { AuthContext } from "../../context/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Fade } from "react-reveal";
 import HeaderBanner from "../../components/HeaderBanner";
 
 const AddToy = () => {
@@ -26,7 +27,6 @@ const AddToy = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.insertedId) {
           Swal.fire("New toy created successfully done!");
           reset();
@@ -37,12 +37,19 @@ const AddToy = () => {
   return (
     <div>
       <HeaderBanner>
-        <h3 className="text-xl">CREATE A NEW TOY</h3>
+        <Fade botton>
+          <h3 className="text-3xl font-bold">CREATE A NEW TOY</h3>
+        </Fade>
       </HeaderBanner>
       <div className="toy-container">
         <div className="p-8 max-w-2xl mx-auto">
           {/* create product form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="my-5">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="my-5"
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
+          >
             {/* header title */}
             <div className="border-2 p-5">
               <div className="flex gap-4 items-center">

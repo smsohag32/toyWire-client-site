@@ -34,7 +34,7 @@ const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/toys/${params.id}`),
+          fetch(`https://toy-wire-server.vercel.app/toys/${params.id}`),
       },
       {
         path: "/blog",
@@ -59,7 +59,8 @@ const routes = createBrowserRouter([
       {
         path: "toy/update/:id",
         element: <ToyUpdate />,
-        loader: ({ params }) => fetch(`http://localhost:3000/toy/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://toy-wire-server.vercel.app/toy/${params.id}`),
       },
       {
         path: "add-toy",

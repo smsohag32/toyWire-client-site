@@ -6,7 +6,9 @@ import { AuthContext } from "../../context/AuthProvider";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
+import useTitle from "../../hooks/useTitle";
 const Login = () => {
+  useTitle("Login");
   const { userLogin, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -27,7 +29,7 @@ const Login = () => {
     const { email, password } = userInfo;
     setError("");
     userLogin(email, password)
-      .then((loggedUser) => {
+      .then(() => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -42,7 +44,7 @@ const Login = () => {
   // handle google login
   const handleGoogleLogin = () => {
     googleLogin()
-      .then((result) => {
+      .then(() => {
         navigate(from, { replace: true });
       })
       .catch();
@@ -50,7 +52,10 @@ const Login = () => {
 
   return (
     <div className="py-10 bg-opacity-50 toy-bg">
-      <div className="max-w-sm mx-auto bg-white bg-opacity-90  backdrop-blur-xl rounded-md py-10 px-5">
+      <div
+        data-aos="fade-down-left"
+        className="max-w-sm mx-auto bg-white bg-opacity-90  backdrop-blur-xl rounded-md py-10 px-5"
+      >
         <div className="grid items-center w-full grid-cols-1 text-center justify-center">
           <h3 className="text-xl mt-1 font-bold">
             Welcome to Toy<span className="secondary-text">W</span>ire! <br />{" "}

@@ -2,12 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import HeaderBanner from "../../components/HeaderBanner";
 import MyToyRow from "./MyToyRow";
-
+import { Fade } from "react-reveal";
 import { AiFillDownSquare } from "react-icons/ai";
 import Spinner from "../../components/Spinner";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const MyToys = () => {
+  useTitle("My Toys");
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -67,7 +69,6 @@ const MyToys = () => {
       });
   }, [user.email]);
 
-  // console.log(myToys);
   // spinner
   if (loading) {
     return <Spinner />;
@@ -76,15 +77,17 @@ const MyToys = () => {
   return (
     <div className="toy-bg">
       <HeaderBanner>
-        <div className="flex flex-col text-center justify-center items-center">
-          <h2 className="text-2xl font-bold mb-3">
-            My All <span className="secondary-text">Toys</span> Collection
-          </h2>
-          <p className="opacity-70">
-            List your toys for sale and connect with toy <br /> enthusiasts
-            worldwide!
-          </p>
-        </div>
+        <Fade right>
+          <div className="flex flex-col text-center justify-center items-center">
+            <h2 className="text-2xl font-bold mb-3">
+              My All <span className="secondary-text">Toys</span> Collection
+            </h2>
+            <p className="opacity-70">
+              List your toys for sale and connect with toy <br /> enthusiasts
+              worldwide!
+            </p>
+          </div>
+        </Fade>
       </HeaderBanner>
       <div className="toy-container backdrop-blur-md bg-opacity-50 py-10">
         <div>

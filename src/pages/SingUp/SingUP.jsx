@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
+import useTitle from "../../hooks/useTitle";
 
 const SingUp = () => {
   const { userSingUp, userLogOut, userProfileUpdate } = useContext(AuthContext);
+  useTitle("Sing up");
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isShow, setIsShow] = useState(false);

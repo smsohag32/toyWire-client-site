@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import HeaderBanner from "../../../components/HeaderBanner";
 import ToyRow from "../ToyRow";
+import { Fade } from "react-reveal";
 
 const AllToys = () => {
   const [loadedToys, setLoadedToys] = useState([]);
@@ -35,21 +36,22 @@ const AllToys = () => {
     }
   };
 
-  console.log(allToys);
   return (
     <div>
       <HeaderBanner>
-        <div className="flex flex-col space-y-2">
-          <p>Today is your Lucky Day</p>
-          <div className="relative">
-            <h2 className="text-3xl  font-bold opacity-80">
-              Choose Your Free Gift
-            </h2>
-            <div className="badge badge-accent absolute right-3 md:-right-16 -top-7">
-              Offer
+        <Fade right>
+          <div className="flex flex-col space-y-2">
+            <p>Today is your Lucky Day</p>
+            <div className="relative">
+              <h2 className="text-3xl  font-bold opacity-80">
+                Choose Your Free Gift
+              </h2>
+              <div className="badge badge-accent absolute right-3 md:-right-16 -top-7">
+                Offer
+              </div>
             </div>
           </div>
-        </div>
+        </Fade>
       </HeaderBanner>
       <div className="toy-container py-10">
         <div>
@@ -98,15 +100,17 @@ const AllToys = () => {
         <div className="overflow-x-auto py-5">
           <table className="table w-full">
             <thead>
-              <tr>
-                <th>SL</th>
-                <th>Seller Name</th>
-                <th>Toy Name</th>
-                <th>Sub Category</th>
-                <th>Price</th>
-                <th>Available Quantity</th>
-                <th>View</th>
-              </tr>
+              <Fade left>
+                <tr>
+                  <th>SL</th>
+                  <th>Seller Name</th>
+                  <th>Toy Name</th>
+                  <th>Sub Category</th>
+                  <th>Price</th>
+                  <th>Available Quantity</th>
+                  <th>View</th>
+                </tr>
+              </Fade>
             </thead>
             <tbody>
               {allToys &&

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Spinner from "../../components/Spinner";
+// import Spinner from "../../components/Spinner";
 import ToyCard from "../../components/ToyCard";
-import Marquee from "react-fast-marquee";
+import Spinner from "../../components/Spinner";
 const Trending = () => {
   const [trendingData, setTrendingData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -11,13 +11,11 @@ const Trending = () => {
     fetch(`https://toy-wire-server.vercel.app/trending`)
       .then((res) => res.json())
       .then((data) => {
-        setTrendingData(data);
         setLoading(false);
+        setTrendingData(data);
       });
   }, []);
-  if (loading) {
-    return <Spinner />;
-  }
+
   return (
     <div className="toy-container py-10">
       <div>
@@ -30,6 +28,7 @@ const Trending = () => {
         </p>
       </div>
       <hr className="mt-5" />
+      {loading && <Spinner />}
       <div className="grid my-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {trendingData &&
           trendingData.map((toy) => <ToyCard key={toy._id} toy={toy} />)}

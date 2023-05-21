@@ -7,24 +7,31 @@ import "swiper/css/pagination";
 import "./popularToys.css";
 import { EffectCoverflow, Pagination } from "swiper";
 import { useEffect, useState } from "react";
+import Spinner from "../../../components/Spinner";
 const PopularToys = () => {
-  const [popularToys, sePopularToys] = useState([]);
-
+  const [popularToys, setPopularToys] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch(`https://toy-wire-server.vercel.app/popular`)
-      .then((res) => res.json())
-      .then((data) => {
-        sePopularToys(data);
-      });
+    setLoading(true);
+    const fetchDada = async () => {
+      const res = await fetch(`https://toy-wire-server.vercel.app/popular`);
+      const data = await res.json();
+      setPopularToys(data);
+      setLoading(false);
+    };
+    fetchDada();
   }, []);
 
+  if (loading) {
+    return <Spinner />;
+  }
   return (
     <div className="py-10">
       <div className="toy-container">
         <div className="text-center">
           <h2 className="text-2xl">Popular Robotic Toys Gallery</h2>
 
-          <p>You may like this</p>
+          <p className="secondary-text">You may like this</p>
         </div>
 
         <div>

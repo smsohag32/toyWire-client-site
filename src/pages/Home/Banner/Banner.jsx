@@ -19,14 +19,12 @@ const Banner = () => {
       .then((offersData) => {
         setOffers(offersData);
         setLoading(false);
-      })
-      .catch((error) => console.log(error));
+      });
   }, []);
 
   if (loading) {
     return <Spinner />;
   }
-  console.log(offers);
   return (
     <div className=" h-full">
       <Swiper

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const ToyRow = ({ toy, index }) => {
   const { _id, sellerName, subCategory, toyName, price, quantity } = toy;
   return (
-    <tr>
+    <tr data-aos="fade-up" data-aos-anchor-placement="top-center">
       <th>{index + 1}</th>
       <td>{sellerName}</td>
       <td>{toyName}</td>

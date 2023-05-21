@@ -1,15 +1,9 @@
 import { Link, useRouteError } from "react-router-dom";
 import { useLottie } from "lottie-react";
 import errorImg from "../../assets/animation/errorImg.json";
-import {
-  AiFillLeftSquare,
-  AiOutlineLeftCircle,
-  AiOutlineLeftSquare,
-} from "react-icons/ai";
+import { AiOutlineLeftCircle } from "react-icons/ai";
 const ErrorPage = () => {
-  const { error, status } = useRouteError();
-
-  console.log(error, status);
+  const { error } = useRouteError();
 
   const options = {
     animationData: errorImg,
@@ -24,7 +18,7 @@ const ErrorPage = () => {
         <div className="w-1/2 mx-auto">{View}</div>
         <div className="">
           <div className="mb-7 text-sm pt-5 opacity-70 mt-5">
-            {error ? <p>{error.message}</p> : <p>Something Went Wrong !</p>}
+            {error ? <p>{error.message} </p> : <p>Something Went Wrong !</p>}
           </div>
           <div className="flex items-center gap-2 justify-center">
             <Link className="" to="/">

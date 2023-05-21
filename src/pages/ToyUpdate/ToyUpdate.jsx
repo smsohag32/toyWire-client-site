@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 const ToyUpdate = () => {
+  useTitle("Toy Update");
   const loadedToy = useLoaderData();
   const navigate = useNavigate();
   const { _id, toyName, description, price, quantity } = loadedToy;
@@ -17,7 +19,7 @@ const ToyUpdate = () => {
     const upDescription = e.target.description.value;
     const upQuantity = e.target.quantity.value;
     const upPrice = e.target.price.value;
-    console.log(upDescription, upQuantity);
+
     if (upDescription == "") {
       return setDesError("Description field is required *");
     } else if (upQuantity === "") {
@@ -31,7 +33,7 @@ const ToyUpdate = () => {
       upPrice,
       upQuantity,
     };
-    console.log(updatedInfo);
+
     fetch(`https://toy-wire-server.vercel.app/toy/${_id}`, {
       method: "PUT",
       headers: {
@@ -41,7 +43,6 @@ const ToyUpdate = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           Swal.fire({
             icon: "success",

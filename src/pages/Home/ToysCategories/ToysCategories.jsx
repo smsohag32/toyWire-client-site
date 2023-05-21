@@ -7,10 +7,8 @@ import ToyCard from "../../../components/ToyCard";
 
 const ToysCategories = () => {
   const [categoryData, setCategoryData] = useState(null);
-  const [loading, setLoading] = useState(false);
+
   const fetchCategoryData = async (category) => {
-    setLoading(true);
-    console.log(category);
     const res = await fetch(
       `https://toy-wire-server.vercel.app/subCategory?category=${category}`
     );

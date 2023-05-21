@@ -2,10 +2,10 @@ import { useLoaderData } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import toast, { Toaster } from "react-hot-toast";
+import useTitle from "../../hooks/useTitle";
 
 const ToyDetails = () => {
   const toy = useLoaderData();
-  console.log(toy);
   const {
     sellerName,
     toyName,
@@ -16,7 +16,7 @@ const ToyDetails = () => {
     img,
     description,
   } = toy;
-
+  useTitle("Toy Details");
   // handle add to cart //TODO
   const handleAddToCart = () => {
     toast.success("Product added !");
