@@ -7,7 +7,7 @@ import { GrClose } from "react-icons/gr";
 const Header = () => {
   const { user, userLogOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-
+  const [changeColor, setChangeColor] = useState(false);
   // route change scroll to top position handle
   const { pathname } = useLocation() || "/";
 
@@ -21,8 +21,11 @@ const Header = () => {
 
   // handle to navLink hide onscroll
   const handleHideNavLink = () => {
-    if (window.scrollY >= 60) {
+    if (window.scrollY >= 90) {
       setIsOpen(false);
+      setChangeColor(true);
+    } else {
+      setChangeColor(false);
     }
   };
 
@@ -32,7 +35,11 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="bg-slate-100 shadow-sm backdrop-blur-2xl bg-opacity-90 sticky top-0 left-0 right-0 z-50 py-2">
+    <div
+      className={` shadow-sm backdrop-blur-2xl bg-opacity-90 sticky top-0 left-0 right-0 z-50 py-2 ${
+        changeColor ? "bg-green-400" : "bg-white"
+      }`}
+    >
       <nav className="flex toy-container items-center justify-between">
         <div className="md:hidden">
           {isOpen ? (
@@ -58,10 +65,10 @@ const Header = () => {
         </span>
 
         <ul
-          className={`flex flex-col py-8 md:py-0 bg-slate-300 md:bg-transparent  md:text-black absolute md:static gap-[1.5rem] md:flex-row ${
+          className={`flex flex-col py-8 md:py-0 bg-slate-200 md:bg-transparent  md:text-black absolute md:static gap-[1.5rem] md:flex-row ${
             isOpen
-              ? "top-[82px] transform duration-100 right-0 left-0 text-center"
-              : "-right-60 top-[82px] overflow-hidden duration-100"
+              ? "top-[80px] transform duration-100 right-0 left-0 text-center"
+              : "-right-60 top-[80px] overflow-hidden duration-100"
           }`}
         >
           <li>
