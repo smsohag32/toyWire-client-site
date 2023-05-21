@@ -21,10 +21,10 @@ const PopularToys = () => {
   return (
     <div className="py-10">
       <div className="toy-container">
-        <div className="flex flex-col max-w-md mx-auto w-full border-opacity-50">
-          <div className="divider">
-            <h2 className="text-2xl">Popular Robotic Toys Gallery</h2>
-          </div>
+        <div className="text-center">
+          <h2 className="text-2xl">Popular Robotic Toys Gallery</h2>
+
+          <p>You may like this</p>
         </div>
 
         <div>
@@ -44,33 +44,12 @@ const PopularToys = () => {
             modules={[EffectCoverflow, Pagination]}
             className="popularToyImg"
           >
-            <SwiperSlide>
-              <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-            </SwiperSlide>
+            {popularToys &&
+              popularToys.map((popularToy) => (
+                <SwiperSlide key={popularToy._id}>
+                  <img src={popularToy?.img} />
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </div>

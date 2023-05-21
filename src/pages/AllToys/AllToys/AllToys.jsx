@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import HeaderBanner from "../../../components/HeaderBanner";
-import ToyRow from "./ToyRow";
+import ToyRow from "../ToyRow";
 
 const AllToys = () => {
   const [loadedToys, setLoadedToys] = useState([]);

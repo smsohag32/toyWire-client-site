@@ -36,7 +36,7 @@ const MyToys = () => {
   // load data
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/toys?email=${user?.email}`)
+    fetch(`http://localhost:3000/my-toys?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyToys(data);
