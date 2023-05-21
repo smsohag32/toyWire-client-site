@@ -32,7 +32,7 @@ const ToyUpdate = () => {
       upQuantity,
     };
     console.log(updatedInfo);
-    fetch(`http://localhost:3000/toy/${_id}`, {
+    fetch(`https://toy-wire-server.vercel.app/toy/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

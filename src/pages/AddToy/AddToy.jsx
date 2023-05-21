@@ -17,7 +17,7 @@ const AddToy = () => {
 
   //   handle form value in react hook form to post database
   const onSubmit = (newToy) => {
-    fetch(`http://localhost:3000/toys`, {
+    fetch(`https://toy-wire-server.vercel.app/toys`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

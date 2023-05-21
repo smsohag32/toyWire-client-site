@@ -4,6 +4,8 @@ import HeaderBanner from "../../components/HeaderBanner";
 import MyToyRow from "./MyToyRow";
 
 import { AiFillDownSquare } from "react-icons/ai";
+import Spinner from "../../components/Spinner";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -12,31 +14,52 @@ const MyToys = () => {
 
   // handle delete toy
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/toy/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount > 0) {
-          const remaining = myToys?.filter((toy) => toy._id != id);
-          setMyToys(remaining);
-        }
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to delete it?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://toy-wire-server.vercel.app/toy/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                "Deleted!",
+                "Your products has been deleted.",
+                "success"
+              );
+              const remaining = myToys?.filter((toy) => toy._id != id);
+              setMyToys(remaining);
+            }
+          });
+      }
+    });
   };
 
   // handle to filter data
   const handleFilter = (value) => {
-    fetch(`http://localhost:3000/sorted?filter=${value}&&email=${user.email}`)
+    setLoading(true);
+    fetch(
+      `https://toy-wire-server.vercel.app/sorted?filter=${value}&&email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyToys(data);
+        setLoading(false);
       });
   };
 
   // load data
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/my-toys?email=${user?.email}`)
+    fetch(`https://toy-wire-server.vercel.app/my-toys?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyToys(data);
@@ -44,7 +67,11 @@ const MyToys = () => {
       });
   }, [user.email]);
 
-  console.log(myToys);
+  // console.log(myToys);
+  // spinner
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="toy-bg">
@@ -62,7 +89,10 @@ const MyToys = () => {
       <div className="toy-container backdrop-blur-md bg-opacity-50 py-10">
         <div>
           <div className="dropdown dropdown-bottom">
-            <label tabIndex={0} className=" items-center btn m-1 flex gap-3">
+            <label
+              tabIndex={0}
+              className=" items-center border-8 bg-white rounded-3xl px-5 py-2 m-1 flex gap-3"
+            >
               Filter
               <span>
                 <AiFillDownSquare></AiFillDownSquare>

@@ -11,7 +11,7 @@ const PopularToys = () => {
   const [popularToys, sePopularToys] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/popular`)
+    fetch(`https://toy-wire-server.vercel.app/popular`)
       .then((res) => res.json())
       .then((data) => {
         sePopularToys(data);

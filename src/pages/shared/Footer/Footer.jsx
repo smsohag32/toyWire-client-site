@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/logo/toyLogo.png";
 const Footer = () => {
   return (
-    <div className="bg-black text-white">
+    <div className=" text-white">
       <footer className="bg-gray-800 py-6">
         <div className="container mx-auto px-4">
           <div className="flex px-10 md:px-0 flex-wrap">
@@ -45,7 +45,7 @@ const Footer = () => {
             </div>
             <div className="w-full md:w-1/4">
               <h4 className="text-white text-lg font-bold mb-4">Follow Us</h4>
-              <div className="flex gap-7">
+              <div className="flex gap-7 primary-text">
                 <span className="cursor-pointer">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

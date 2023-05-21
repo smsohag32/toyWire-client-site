@@ -12,7 +12,7 @@ const ToysCategories = () => {
     setLoading(true);
     console.log(category);
     const res = await fetch(
-      `http://localhost:3000/subCategory?category=${category}`
+      `https://toy-wire-server.vercel.app/subCategory?category=${category}`
     );
     const data = await res.json();
     setCategoryData(data);
@@ -23,7 +23,7 @@ const ToysCategories = () => {
   };
 
   useEffect(() => {
-    handleTab("Talking Plush");
+    handleTab(0, "Talking Plush");
   }, []);
 
   return (

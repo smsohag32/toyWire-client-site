@@ -8,7 +8,7 @@ const Blogs = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/blogs")
+    fetch("https://toy-wire-server.vercel.app/blogs")
       .then((res) => res.json())
       .then((data) => {
         setBlogs(data);
