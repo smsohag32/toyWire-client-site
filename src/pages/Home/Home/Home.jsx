@@ -2,6 +2,7 @@ import Banner from "../Banner/Banner";
 import NewsLetter from "../NewsLetter";
 import PopularToys from "../PopularToys/PopularToys";
 import ToysCategories from "../ToysCategories/ToysCategories";
+import Trending from "../Trending";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <Banner />
       <PopularToys />
       <ToysCategories />
+      <Trending />
       <NewsLetter />
     </div>
   );
