@@ -68,7 +68,7 @@ const Header = () => {
           className={`flex font-serif uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 bg-slate-200 md:bg-transparent  md:text-black absolute md:static gap-[1.5rem] md:flex-row ${
             isOpen
               ? "top-[80px] transform duration-100 right-0 left-0 text-center"
-              : "-right-60 top-[80px] overflow-hidden duration-100"
+              : "-left-60 top-[80px] overflow-hidden duration-100"
           }`}
         >
           <li>

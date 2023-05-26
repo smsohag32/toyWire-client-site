@@ -14,7 +14,7 @@ const Banner = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   useEffect(() => {
-    fetch(`https://toy-wire-server.vercel.app/offers`)
+    fetch(`data.json`)
       .then((res) => res.json())
       .then((offersData) => {
         setOffers(offersData);
