@@ -1,7 +1,15 @@
-const loadData = async () => {
-    const res = await fetch(`https://toy-wire-server.vercel.app/popular`);
-    const data = await res.json();
-    return data
-}
+import { useEffect, useState } from "react";
 
-export default loadData;
+export const useData = () =>{
+    const [allToys, setAllToys] = useState([])
+     useEffect(() => {
+    fetch(`https://toy-wire-server.vercel.app/toys`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAllToys(data);
+        setAllToys(data);
+      });
+  }, []);
+
+  return { allToys }
+}

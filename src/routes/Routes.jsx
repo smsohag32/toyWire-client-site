@@ -60,7 +60,7 @@ const routes = createBrowserRouter([
         path: "toy/update/:id",
         element: <ToyUpdate />,
         loader: ({ params }) =>
-          fetch(`https://toy-wire-server.vercel.app/toy/${params.id}`),
+          fetch(`https://toy-wire-server.vercel.app/toys/toy/${params.id}`),
       },
       {
         path: "add-toy",

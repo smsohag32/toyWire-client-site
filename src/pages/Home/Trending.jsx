@@ -8,7 +8,7 @@ const Trending = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://toy-wire-server.vercel.app/trending`)
+    fetch(`https://toy-wire-server.vercel.app/toys/trending`)
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);

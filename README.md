@@ -2,7 +2,7 @@
 
 ## Live Link : [ToyWire](https://toywire-8b703.web.app/)
 
-## Server site Like: [ToyWire Server](https://toy-wire-server.vercel.app/)
+## Server site Like: [ToyWire Server](https://toy-wire-server.vercel.app/toys/)
 
 - This repository contains the source code for the ToyWire e-commerce website. It is a platform for selling robotics toys and seller to add products in this website.
 

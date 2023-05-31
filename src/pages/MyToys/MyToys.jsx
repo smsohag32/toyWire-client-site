@@ -26,7 +26,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://toy-wire-server.vercel.app/toy/${id}`, {
+        fetch(`https://toy-wire-server.vercel.app/toys/toy/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -49,7 +49,7 @@ const MyToys = () => {
   const handleFilter = (value) => {
     setLoading(true);
     fetch(
-      `https://toy-wire-server.vercel.app/sorted?filter=${value}&&email=${user.email}`
+      `https://toy-wire-server.vercel.app/toys/sorted?filter=${value}&&email=${user.email}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -61,7 +61,9 @@ const MyToys = () => {
   // load data
   useEffect(() => {
     setLoading(true);
-    fetch(`https://toy-wire-server.vercel.app/my-toys?email=${user?.email}`)
+    fetch(
+      `https://toy-wire-server.vercel.app/toys/my-toys?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyToys(data);

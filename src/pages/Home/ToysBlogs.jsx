@@ -40,7 +40,7 @@ const ToysBlogs = () => {
             <Fade right>
               <img
                 className="w-full hover:scale-110 duration-1000 h-full"
-                src="https://i.ibb.co/SVcyzMK/learning2.jpg"
+                src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9ib3RzfGVufDB8fDB8fHww&w=1000&q=80"
                 alt=""
               />
             </Fade>
@@ -76,7 +76,7 @@ const ToysBlogs = () => {
             <Fade left>
               <img
                 className="w-full hover:scale-x-110 duration-1000 h-full"
-                src="https://i.ibb.co/SVcyzMK/learning2.jpg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2m8V2e01osK5Bzo1_V5HgP933TYclNEGskNVZl9MCta70eP4zI4-DMCam4SPQ1w8njto"
                 alt=""
               />
             </Fade>

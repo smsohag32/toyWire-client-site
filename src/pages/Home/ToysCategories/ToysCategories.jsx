@@ -10,7 +10,7 @@ const ToysCategories = () => {
 
   const fetchCategoryData = async (category) => {
     const res = await fetch(
-      `https://toy-wire-server.vercel.app/subCategory?category=${category}`
+      `https://toy-wire-server.vercel.app/toys/subCategory?category=${category}`
     );
     const data = await res.json();
     setCategoryData(data);

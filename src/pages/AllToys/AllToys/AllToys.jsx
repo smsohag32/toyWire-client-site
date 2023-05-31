@@ -18,7 +18,7 @@ const AllToys = () => {
 
   const handleSearch = () => {
     if (searchText.length > 0) {
-      fetch(`https://toy-wire-server.vercel.app/toys-search/${searchText}`)
+      fetch(`https://toy-wire-server.vercel.app/toyssearch/${searchText}`)
         .then((res) => res.json())
         .then((data) => {
           setAllToys(data);
