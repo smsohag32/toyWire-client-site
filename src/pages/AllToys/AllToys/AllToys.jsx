@@ -113,7 +113,7 @@ const AllToys = () => {
               </Fade>
             </thead>
             <tbody>
-              {allToys &&
+              {allToys.length > 0 &&
                 allToys.map((toy, index) => (
                   <ToyRow index={index} key={toy._id} toy={toy} />
                 ))}

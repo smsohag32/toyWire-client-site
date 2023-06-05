@@ -130,7 +130,7 @@ const MyToys = () => {
               </tr>
             </thead>
             <tbody>
-              {myToys &&
+              {myToys.length > 0 &&
                 myToys.map((myToy, index) => (
                   <MyToyRow
                     key={myToy._id}

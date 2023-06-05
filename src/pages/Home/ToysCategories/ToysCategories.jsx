@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -10,7 +10,7 @@ const ToysCategories = () => {
 
   const fetchCategoryData = async (category) => {
     const res = await fetch(
-      `https://toy-wire-server.vercel.app/toys/subCategory?category=${category}`
+      `https://toy-wire-server.vercel.app/subCategory?category=${category}`
     );
     const data = await res.json();
     setCategoryData(data);
@@ -19,10 +19,6 @@ const ToysCategories = () => {
   const handleTab = (index, category) => {
     fetchCategoryData(category);
   };
-
-  useEffect(() => {
-    handleTab(0, "Talking Plush");
-  }, []);
 
   return (
     <div className="bg-white py-10">
@@ -109,7 +105,7 @@ const ToysCategories = () => {
           </TabPanel>
         </Tabs>
         <div className="grid grid-cols-1 my-10 md:grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3">
-          {categoryData &&
+          {categoryData?.length > 0 &&
             categoryData.map((toy) => <ToyCard key={toy._id} toy={toy} />)}
         </div>
       </div>
