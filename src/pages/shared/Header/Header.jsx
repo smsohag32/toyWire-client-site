@@ -1,5 +1,5 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
-import logo from "../../../assets/logo/toyLogo.png";
+
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
 import { CiMenuFries } from "react-icons/ci";
@@ -54,12 +54,11 @@ const Header = () => {
         </div>
         <span>
           <Link className="flex items-center gap-1" to="./">
-            <img className="w-10" src={logo} alt="logo" />
             <p
               style={{ fontFamily: `'Pacifico', cursive` }}
               className=" font-bold uppercase text-xl"
             >
-              Toy<span className="secondary-text">W</span>ire
+              Toy<span className="primary-text">W</span>ire
             </p>
           </Link>
         </span>

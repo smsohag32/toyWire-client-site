@@ -26,7 +26,7 @@ const PopularToys = () => {
     return <Spinner />;
   }
   return (
-    <div className="py-10">
+    <div className="py-20">
       <div className="toy-container">
         <div className="text-center">
           <h2 className="text-2xl">Popular Robotic Toys Gallery</h2>

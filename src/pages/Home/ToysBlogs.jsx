@@ -6,7 +6,7 @@ const ToysBlogs = () => {
   //   const [isLike2, isLike2] = useState(false);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white my-12">
       <div className="toy-container py-10">
         <div className="text-center bg-slate-100  py-2 opacity-80 mb-10">
           <h1 className="text-2xl font-bold">
@@ -32,9 +32,6 @@ const ToysBlogs = () => {
                 </p>
               </article>
             </Fade>
-            <span className="md:absolute pt-5 bottom-8 cursor-pointer text-3xl  text-red-500 left-0">
-              {isLike ? <AiFillLike /> : <AiOutlineLike></AiOutlineLike>}
-            </span>
           </div>
           <div className="w-full">
             <Fade right>
@@ -65,12 +62,6 @@ const ToysBlogs = () => {
                 </p>
               </article>
             </Fade>
-            <span
-              onClick={() => setIsLike(!isLike)}
-              className="md:absolute pt-5 bottom-8 cursor-pointer text-3xl  text-red-500 left-0"
-            >
-              {isLike ? <AiFillLike /> : <AiOutlineLike></AiOutlineLike>}
-            </span>
           </div>
           <div className="w-full">
             <Fade left>

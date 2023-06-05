@@ -2,17 +2,25 @@ import { useEffect, useState } from "react";
 import HeaderBanner from "../../../components/HeaderBanner";
 import ToyRow from "../ToyRow";
 import { Fade } from "react-reveal";
+import Spinner from "../../../components/Spinner";
 
 const AllToys = () => {
   const [loadedToys, setLoadedToys] = useState([]);
   const [allToys, setAllToys] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     fetch(`https://toy-wire-server.vercel.app/toys`)
       .then((res) => res.json())
       .then((data) => {
         setAllToys(data);
         setLoadedToys(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
       });
   }, []);
 
@@ -98,27 +106,33 @@ const AllToys = () => {
           </div>
         </div>
         <div className="overflow-x-auto py-5">
-          <table className="table w-full">
-            <thead>
-              <Fade left>
-                <tr>
-                  <th>SL</th>
-                  <th>Seller Name</th>
-                  <th>Toy Name</th>
-                  <th>Sub Category</th>
-                  <th>Price</th>
-                  <th>Available Quantity</th>
-                  <th>View</th>
-                </tr>
-              </Fade>
-            </thead>
-            <tbody>
-              {allToys.length > 0 &&
-                allToys.map((toy, index) => (
-                  <ToyRow index={index} key={toy._id} toy={toy} />
-                ))}
-            </tbody>
-          </table>
+          {loading ? (
+            <>
+              <Spinner />
+            </>
+          ) : (
+            <table className="table w-full">
+              <thead>
+                <Fade left>
+                  <tr>
+                    <th>SL</th>
+                    <th>Seller Name</th>
+                    <th>Toy Name</th>
+                    <th>Sub Category</th>
+                    <th>Price</th>
+                    <th>Available Quantity</th>
+                    <th>View</th>
+                  </tr>
+                </Fade>
+              </thead>
+              <tbody>
+                {allToys.length > 0 &&
+                  allToys.map((toy, index) => (
+                    <ToyRow index={index} key={toy._id} toy={toy} />
+                  ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </div>
