@@ -128,7 +128,7 @@ const Header = () => {
                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <Link to="/dashboard" className="justify-between">
+                  <Link to="/userhome" className="justify-between">
                     Profile
                   </Link>
                 </li>
