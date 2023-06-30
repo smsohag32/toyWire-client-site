@@ -18,9 +18,8 @@ const BlogCard = () => {
         </p>
         <p className="mt-4">25/01/2023</p>
       </article>
-      <div className="w-full">
+      <div className="w-full" data-aos="fade-left">
         <img
-          data-aos="fade-left"
           className="w-full rounded-sm  hover:scale-110 duration-1000 h-full"
           src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9ib3RzfGVufDB8fDB8fHww&w=1000&q=80"
           alt=""

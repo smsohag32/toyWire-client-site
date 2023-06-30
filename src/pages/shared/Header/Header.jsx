@@ -55,10 +55,10 @@ const Header = () => {
         <span>
           <Link className="flex items-center gap-1" to="./">
             <p
-              style={{ fontFamily: `'Pacifico', cursive` }}
-              className=" font-bold uppercase text-xl"
+              style={{ fontFamily: `'Rubik Puddles', cursive` }}
+              className=" font-bold uppercase primary-text text-xl"
             >
-              Toy<span className="primary-text">W</span>ire
+              Toywire
             </p>
           </Link>
         </span>

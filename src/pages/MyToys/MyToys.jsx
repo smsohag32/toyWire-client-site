@@ -7,6 +7,7 @@ import { AiFillDownSquare } from "react-icons/ai";
 import Spinner from "../../components/Spinner";
 import Swal from "sweetalert2";
 import useTitle from "../../hooks/useTitle";
+import { Link } from "react-router-dom";
 
 const MyToys = () => {
   useTitle("My Toys");
@@ -69,11 +70,6 @@ const MyToys = () => {
       });
   }, [user.email]);
 
-  // spinner
-  if (loading) {
-    return <Spinner />;
-  }
-
   return (
     <div className="toy-bg">
       <HeaderBanner>
@@ -114,32 +110,43 @@ const MyToys = () => {
             </ul>
           </div>
         </div>
-        <div className="overflow-x-auto w-full">
-          <table className="table backdrop-blur-lg w-full">
-            {/* head */}
-            <thead className="font-sans leading-relaxed">
-              <tr>
-                <th>SN</th>
-                <th>Product</th>
-                <th>Category Additional Info</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {myToys.length > 0 &&
-                myToys.map((myToy, index) => (
-                  <MyToyRow
-                    key={myToy._id}
-                    handleDelete={handleDelete}
-                    index={index}
-                    myToy={myToy}
-                  />
-                ))}
-            </tbody>
-          </table>
-        </div>
+        {loading && <Spinner />}
+        {myToys.length === 0 && !loading && (
+          <p className="text-center">
+            Not Found your Products!
+            <Link to="/add-toy" className="primary-btn">
+              Add Now
+            </Link>
+          </p>
+        )}
+        {myToys.length > 0 && (
+          <div className="overflow-x-auto w-full">
+            <table className="table backdrop-blur-lg w-full">
+              {/* head */}
+              <thead className="font-sans leading-relaxed">
+                <tr>
+                  <th>SN</th>
+                  <th>Product</th>
+                  <th>Category Additional Info</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {myToys.length > 0 &&
+                  myToys.map((myToy, index) => (
+                    <MyToyRow
+                      key={myToy._id}
+                      handleDelete={handleDelete}
+                      index={index}
+                      myToy={myToy}
+                    />
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );

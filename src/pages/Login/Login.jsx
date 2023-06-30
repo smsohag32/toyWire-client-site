@@ -53,14 +53,17 @@ const Login = () => {
   return (
     <div className="py-10 bg-opacity-50 toy-bg">
       <div
-        data-aos="fade-down-left"
+        data-aos="fade-zoom"
         className="max-w-sm mx-auto bg-white bg-opacity-90  backdrop-blur-xl rounded-md py-10 px-5"
       >
         <div className="grid items-center w-full grid-cols-1 text-center justify-center">
           <h3 className="text-xl mt-1 font-bold">
-            Welcome to Toy<span className="secondary-text">W</span>ire! <br />{" "}
+            Welcome to Toy Wire ! <br />
             Please Login
           </h3>
+          <div className="text-xs opacity-70">
+            <p>Demo: email: soh@gmail.com password: 1234Soh@</p>
+          </div>
           <div className="flex w-1/2 flex-col mx-auto opacity-40 border-opacity-20">
             <div className="divider"></div>
           </div>
@@ -159,7 +162,7 @@ const Login = () => {
             onClick={handleGoogleLogin}
             className="w-full flex justify-center items-center gap-5 rounded-xl py-2 hover:bg-orange-300 uppercase text-xs primary-text hover: hover:text-white hover:border-stone-100 font-bold border-black border-2"
           >
-            <FaGoogle className="" /> Login with google
+            <FaGoogle className="text-black" /> Login with google
           </button>
         </div>
       </div>

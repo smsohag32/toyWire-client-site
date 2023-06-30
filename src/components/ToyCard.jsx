@@ -7,17 +7,9 @@ import { AuthContext } from "../context/AuthProvider";
 import Swal from "sweetalert2";
 // single card
 const ToyCard = ({ toy }) => {
-  const { _id, toyName, img, price, ratting } = toy;
-  const { user } = useContext(AuthContext);
+  const { _id, toyName, img, price, ratting, sellerName, subCategory } = toy;
+  console.log(toy);
 
-  const handleToast = () => {
-    if (!user) {
-      Swal.fire({
-        icon: "error",
-        title: "You are not eligible for this page login now",
-      });
-    }
-  };
   return (
     <div
       data-aos="fade-zoom"
@@ -38,14 +30,18 @@ const ToyCard = ({ toy }) => {
             </h1>
           </div>
           <div className="flex items-center justify-between">
-            <p className="text-xs">Review</p>
             <span className="flex gap-1 items-center">
               <span className="text-sm font-bold">{ratting}</span>
               <Rating style={{ maxWidth: 100 }} value={ratting} readOnly />
             </span>
           </div>
-          <div className="w-full mt-6 flex justify-end">
-            <span onClick={handleToast}>
+          <p className="text-sm">{subCategory}</p>
+          <div className="w-full mt-6 flex justify-between">
+            <p className="text-sm opacity-60">
+              <span>Seller: </span>
+              {sellerName}
+            </p>
+            <span>
               <Link
                 className="primary-btn text-center w-full"
                 to={`/toys/${_id}`}

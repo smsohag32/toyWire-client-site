@@ -36,11 +36,6 @@ const AddToy = () => {
 
   return (
     <div>
-      <HeaderBanner>
-        <Fade botton>
-          <h3 className="text-3xl font-bold">CREATE A NEW TOY</h3>
-        </Fade>
-      </HeaderBanner>
       <div className="toy-container">
         <div className="p-8 max-w-2xl mx-auto">
           {/* create product form */}
