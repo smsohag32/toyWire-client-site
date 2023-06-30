@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // import Spinner from "../../components/Spinner";
 import ToyCard from "../../components/ToyCard";
 import Spinner from "../../components/Spinner";
+import { Link } from "react-router-dom";
 const Trending = () => {
   const [trendingData, setTrendingData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -29,9 +30,14 @@ const Trending = () => {
       </div>
       <hr className="mt-5" />
       {loading && <Spinner />}
-      <div className="grid my-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid my-8 gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {trendingData &&
           trendingData.map((toy) => <ToyCard key={toy._id} toy={toy} />)}
+      </div>
+      <div className="flex items-center pt-8 justify-end">
+        <Link to="/alltoys" className="primary-btn">
+          See All Products
+        </Link>
       </div>
     </div>
   );

@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
-import SingUp from "../pages/Singup/Singup";
 import AddToy from "../pages/AddToy/AddToy";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AllToys from "../pages/AllToys/AllToys/AllToys";
@@ -12,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import ToyUpdate from "../pages/ToyUpdate/ToyUpdate";
 import Blogs from "../pages/Blogs/Blogs";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import SingUp from "../pages/SingUp/SingUP";
 
 const routes = createBrowserRouter([
   {
@@ -61,7 +61,7 @@ const routes = createBrowserRouter([
         path: "toy/update/:id",
         element: <ToyUpdate />,
         loader: ({ params }) =>
-          fetch(`https://toy-wire-server.vercel.app/toys/toy/${params.id}`),
+          fetch(`https://toy-wire-server.vercel.app/toys/${params.id}`),
       },
       {
         path: "add-toy",

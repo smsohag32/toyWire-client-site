@@ -20,7 +20,7 @@ const ToyCard = ({ toy }) => {
   };
   return (
     <div
-      data-aos="fade-right"
+      data-aos="fade-zoom"
       className="border-2 hover:scale-y-105 duration-1000 overflow-hidden"
     >
       <div className="card w-full h-full">

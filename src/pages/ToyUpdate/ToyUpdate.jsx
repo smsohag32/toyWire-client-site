@@ -34,7 +34,7 @@ const ToyUpdate = () => {
       upQuantity,
     };
 
-    fetch(`https://toy-wire-server.vercel.app/toys/toy/${_id}`, {
+    fetch(`https://toy-wire-server.vercel.app/toy/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

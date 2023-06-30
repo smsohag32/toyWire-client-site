@@ -3,6 +3,7 @@ import HeaderBanner from "../../../components/HeaderBanner";
 import ToyRow from "../ToyRow";
 import { Fade } from "react-reveal";
 import Spinner from "../../../components/Spinner";
+import ToyCard from "../../../components/ToyCard";
 
 const AllToys = () => {
   const [loadedToys, setLoadedToys] = useState([]);
@@ -105,34 +106,14 @@ const AllToys = () => {
             </div>
           </div>
         </div>
-        <div className="overflow-x-auto py-5">
-          {loading ? (
-            <>
-              <Spinner />
-            </>
-          ) : (
-            <table className="table w-full">
-              <thead>
-                <Fade left>
-                  <tr>
-                    <th>SL</th>
-                    <th>Seller Name</th>
-                    <th>Toy Name</th>
-                    <th>Sub Category</th>
-                    <th>Price</th>
-                    <th>Available Quantity</th>
-                    <th>View</th>
-                  </tr>
-                </Fade>
-              </thead>
-              <tbody>
-                {allToys.length > 0 &&
-                  allToys.map((toy, index) => (
-                    <ToyRow index={index} key={toy._id} toy={toy} />
-                  ))}
-              </tbody>
-            </table>
+        <div className="grid my-10 grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+          {allToys.length === 0 && (
+            <p className="primary-text font-bold text-4xl my-10 text-center">
+              Not Found !
+            </p>
           )}
+          {allToys.length > 0 &&
+            allToys.map((toy, index) => <ToyCard toy={toy} />)}
         </div>
       </div>
     </div>

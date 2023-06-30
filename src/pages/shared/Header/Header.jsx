@@ -36,8 +36,8 @@ const Header = () => {
 
   return (
     <div
-      className={` shadow-sm backdrop-blur-md bg-opacity-90 sticky top-0 left-0 right-0 z-50 py-2 ${
-        changeColor ? "bg-blue-100 bg-opacity-40" : "bg-white"
+      className={` shadow-sm backdrop-blur-md bg-opacity-90 h-16 flex items-center sticky top-0 left-0 right-0 z-50 py-2 ${
+        changeColor ? "bg-white border-b-2" : "bg-white"
       }`}
     >
       <nav className="flex toy-container items-center justify-between">
