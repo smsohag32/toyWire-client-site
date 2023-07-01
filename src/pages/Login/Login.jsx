@@ -16,7 +16,7 @@ const Login = () => {
 
   const location = useLocation();
 
-  const from = location?.state?.from?.pathName || "/";
+  const from = location?.state?.from?.pathname || "/";
   //   react hook form to handle form
   const {
     register,
