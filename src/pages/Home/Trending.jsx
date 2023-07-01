@@ -18,10 +18,12 @@ const Trending = () => {
   }, []);
 
   return (
-    <div className="toy-container py-10">
+    <div className="toy-container pt-10 mb-4">
       <div>
-        <h2 className="text-2xl font-bold mb-2">Trending Toys Collection</h2>
-        <p className="text-gray-700 md:max-w-3xl">
+        <h2 className="text-2xl md:text-3xl primary-text font-bold mb-2">
+          Trending Toys Collection
+        </h2>
+        <p className="text-gray-700 opacity-80 md:max-w-3xl">
           Explore the exciting world of robotics with our collection of trending
           robotics toys. These innovative toys combine fun and education,
           allowing kids to learn about coding, engineering, and problem-solving
@@ -34,7 +36,7 @@ const Trending = () => {
         {trendingData &&
           trendingData.map((toy) => <ToyCard key={toy._id} toy={toy} />)}
       </div>
-      <div className="flex items-center pt-8 justify-end">
+      <div className="flex items-center pt-8 justify-center">
         <Link to="/alltoys" className="primary-btn">
           See All Products
         </Link>

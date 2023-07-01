@@ -8,13 +8,14 @@ import "swiper/css/thumbs";
 import "./banner.css";
 import { Autoplay, FreeMode, Thumbs } from "swiper";
 import Spinner from "../../../components/Spinner";
+import { Link } from "react-router-dom";
 const Banner = () => {
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   useEffect(() => {
-    fetch(`data.json`)
+    fetch(`https://toy-wire-server.vercel.app/offers`)
       .then((res) => res.json())
       .then((offersData) => {
         setOffers(offersData);
@@ -22,18 +23,16 @@ const Banner = () => {
       });
   }, []);
 
-  if (loading) {
-    return <Spinner />;
-  }
   return (
-    <div className=" h-full">
+    <div className="">
+      {loading && <Spinner />}
       <Swiper
         style={{
           "--swiper-navigation-color": "#fff",
           "--swiper-pagination-color": "#fff",
         }}
         autoplay={{
-          delay: 2500,
+          delay: 4500,
           disableOnInteraction: false,
         }}
         spaceBetween={10}
@@ -49,20 +48,23 @@ const Banner = () => {
                   className="relative h-full contrast-75  brightness-50"
                   src={offer.img}
                 />
-                <div className="absolute text-white top-0 h-full left-0 bg-gradient-to-b from-[#1b1b1b] to-[rgba(21, 21, 21, 0)] bg-opacity-10 justify-center right-0 ">
+                <div className="absolute text-white top-0 h-full left-0 bg-gradient-to-b from-[#3b3a3a] to-[rgba(21, 21, 21, 0)] bg-opacity-10 justify-center right-0 ">
                   <div className="flex toy-container md:mt-10 sm:mt-5 lg:mt-14 flex-col lg:flex-row items-center h-full">
                     <div className="text-left sm:space-y-3 md:space-y-3 lg:space-y-3 mt-2 p-2 w-full h-full bg-opacity-20">
                       <h2 className="text-white leading-tight opacity-90 text-xl  md:text-3xl text-center md:text-left">
                         {offer.title}
                       </h2>
-                      <p className="w-full text-xs text-center md:text-left md:text-lg px-5 opacity-70">
+                      <p className="w-full text-xs text-center md:text-left md:text-lg opacity-70">
                         {offer.description}
                       </p>
                     </div>
                     <div className="w-full flex flex-col gap-3 items-center justify-center h-full mb-5">
-                      <button className="btn primary-btn outline-none border-none">
-                        Shop Now
-                      </button>
+                      <Link
+                        to="/blog"
+                        className="btn primary-btn outline-none border-none"
+                      >
+                        Learn More
+                      </Link>
                     </div>
                   </div>
                 </div>

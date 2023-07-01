@@ -26,12 +26,14 @@ const PopularToys = () => {
     return <Spinner />;
   }
   return (
-    <div className="py-20">
+    <div className="pt-20 pb-12">
       <div className="toy-container">
         <div className="text-center">
-          <h2 className="text-2xl">Popular Robotic Toys Gallery</h2>
+          <h2 className="text-2xl md:text-3xl font-bold primary-text">
+            Popular Robotic Toys Gallery
+          </h2>
 
-          <p className="secondary-text">You may like this</p>
+          <p className="text-gray-900">You may like this</p>
         </div>
 
         <div>

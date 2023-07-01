@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Spinner from "../../components/Spinner";
-import Blog from "./Blog";
 import faqImg from "../../assets/banner/faq.png";
+import BlogCard from "../../components/BlogCard";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -24,9 +24,9 @@ const Blogs = () => {
   return (
     <div className="bg-slate-100">
       <div
-        className="w-full flex justify-center items-center h-[400px]"
+        className="w-full flex justify-center items-center h-[225px]"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)),url('${faqImg}')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),url('${faqImg}')`,
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
@@ -41,7 +41,8 @@ const Blogs = () => {
         </div>
       </div>
       <div className="toy-container py-10 grid gap-8">
-        {blogs && blogs.map((blog) => <Blog key={blog._id} blog={blog}></Blog>)}
+        {blogs &&
+          blogs.map((blog) => <BlogCard key={blog._id} blog={blog}></BlogCard>)}
       </div>
     </div>
   );

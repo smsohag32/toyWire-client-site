@@ -45,8 +45,8 @@ const ToysCategories = () => {
   return (
     <div className="bg-white py-10">
       <div className="toy-container">
-        <div className="text-center space-y-2">
-          <h3 className="text-2xl font-serif uppercase font-bold">
+        <div className=" space-y-2">
+          <h3 className="text-2xl primary-text uppercase font-bold">
             Features Robotic Toys
           </h3>
         </div>

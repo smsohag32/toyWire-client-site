@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
 import { CiMenuFries } from "react-icons/ci";
 import { GrClose } from "react-icons/gr";
+import { FaRobot } from "react-icons/fa";
 const Header = () => {
   const { user, userLogOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -56,17 +57,20 @@ const Header = () => {
           <Link className="flex items-center gap-1" to="./">
             <p
               style={{ fontFamily: `'Rubik Puddles', cursive` }}
-              className=" font-bold uppercase primary-text text-xl"
+              className=" font-bold uppercase primary-text flex items-center gap-1 text-xl"
             >
               Toywire
+              <span className="ms-1 text-secondary">
+                <FaRobot />
+              </span>
             </p>
           </Link>
         </span>
 
         <ul
-          className={`flex font-serif uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 bg-slate-200 md:bg-transparent  md:text-black absolute md:static gap-[1.5rem] md:flex-row ${
+          className={`flex font-serif uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 bg-slate-200 md:bg-transparent duration-300 transition-all transform  md:text-black absolute md:static gap-[1.5rem] md:flex-row ${
             isOpen
-              ? "top-[80px] transform duration-100 right-0 left-0 text-center"
+              ? "top-[80px] right-0 left-0 text-center"
               : "-left-60 top-[80px] overflow-hidden duration-100"
           }`}
         >

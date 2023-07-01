@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo/toyLogo.png";
+import { FaRobot } from "react-icons/fa";
 const Footer = () => {
   return (
     <div className=" text-white">
@@ -8,12 +9,15 @@ const Footer = () => {
           <div className="flex px-10 md:px-0 flex-wrap">
             <div className="w-full md:w-1/4 mb-4 md:mb-0">
               <img className="w-10" src={logo} alt="logo" />
-              <Link className="flex mb-4 items-center gap-1" to="./">
+              <Link className="flex items-center mb-2 gap-1" to="./">
                 <p
-                  style={{ fontFamily: `'Pacifico', cursive` }}
-                  className=" font-bold uppercase text-xl"
+                  style={{ fontFamily: `'Rubik Puddles', cursive` }}
+                  className=" font-bold uppercase primary-text flex items-center gap-1 text-xl"
                 >
-                  Toy<span className="secondary-text">W</span>ire
+                  Toywire
+                  <span className="ms-1 text-secondary">
+                    <FaRobot />
+                  </span>
                 </p>
               </Link>
               <p className="text-gray-400 mb-2">123 Toy Street</p>
@@ -43,9 +47,9 @@ const Footer = () => {
                 <li>Remote Control</li>
               </ul>
             </div>
-            <div className="w-full md:w-1/4">
+            <div className="w-full items-center flex flex-col justify-center md:w-1/4">
               <h4 className="text-white text-lg font-bold mb-4">Follow Us</h4>
-              <div className="flex gap-7 primary-text">
+              <div className="flex gap-7 text-gray-400">
                 <span className="cursor-pointer">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
